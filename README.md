@@ -7,4 +7,4 @@ Sugasawa, S., Hui, K. F. C. and Welsh, A. H. (2023). Robust Linear Mixed Models 
 The repository includes the following files.
 
 - `RLMM-HGD.R` : Implementation of the proposed robust linear mixed models (RLMM) 
-- `Example-.R`: Example of fitting RLMM to simulated data
+- `example.R`: Example of fitting RLMM to simulated data
