@@ -2,7 +2,7 @@
 
 This repository provides R code implementing robust linear mixed models, as proposed by the following paper.
 
-Sugasawa, S., Hui, K. F. C. and Welsh, A. H. (2023). Robust Linear Mixed Models using Hierarchical Gamma-Divergence. *(arXiv:xxxx.xxxx)* 
+Sugasawa, S., Hui, K. F. C. and Welsh, A. H. (2024). Robust Linear Mixed Models using Hierarchical Gamma-Divergence. *(arXiv)* 
 
 The repository includes the following files.
 
