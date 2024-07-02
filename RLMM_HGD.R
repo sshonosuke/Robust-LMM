@@ -1,3 +1,8 @@
+## This script includes the following three functions: 
+# RLMM_HGD: Fitting robust linear mixed models 
+# RLMM_HGD_select: Selection of the tuning parameter in gamma-divergence
+# RLMM_HGD_boot: Bootstrap for inference
+
 # packages 
 library(mvtnorm)
 library(lme4)
@@ -6,7 +11,7 @@ library(MCMCpack)
 
 
 ###----------------------------------------------------------###
-###             Robust linear mixed models                   ###
+###              Robust linear mixed models                   ###
 ###         via hierarchical gamma-divergence                ###
 ###----------------------------------------------------------###
 ## INPUT 
@@ -44,7 +49,8 @@ RLMM_HGD <- function(Y, X, Z, ID, gam=0.5, bw=NULL, maxitr=500, init.fit=NULL){
     V.mat <- as.matrix( cbind(V[,qq], V[,-qq]) )
     V <- as.vector(V.mat)
     Sig <- summary(fit)$sigma
-    R <- as.matrix( summary(fit)$varcor$ID )[1:qq, 1:qq] + 0.01*diag(qq)
+    R <- as.matrix( summary(fit)$varcor$ID )[1:qq, 1:qq] 
+    R <- R + 0.01*diag(qq)     # regularization to avoid numerical error
     init.fit <- list(Beta=Beta, RE=V, V=R, Sig=Sig)
   }else{
     Beta <- init.fit$Beta
@@ -115,7 +121,7 @@ RLMM_HGD <- function(Y, X, Z, ID, gam=0.5, bw=NULL, maxitr=500, init.fit=NULL){
       mat <- mat + t(sZ)%*%IS%*%sZ
     }
     R <- (1+gam)*(t(uu*V.mat)%*%V.mat - R%*%mat%*%R + m*R)/m
-    R <- R + 0.01*diag(qq)     # regularization to avoid numerical instability
+    R <- R + 0.01*diag(qq)     # regularization to avoid numerical error
   
     # checking convergence
     dd <- sum(abs(Beta - Beta0)) / sum(abs(Beta0)+0.0001)
@@ -199,7 +205,7 @@ RLMM_HGD_select <- function(Y, X, Z, ID, gam.set=NULL, maxitr=50, print=F){
 
 
 ###----------------------------------------------------------###
-###        Tuning parameter selection by H-score             ###
+###       Cluster weighted bootstrap for inference           ###
 ###----------------------------------------------------------###
 ## INPUT
 # Y: response variable (vector)
@@ -222,7 +228,7 @@ RLMM_HGD_boot <- function(Y, X, Z, ID, B=200, gam=0.5, print=T){
   Boot.R <- array(NA, c(B, qq, qq))
   Boot.Sig <- c()
   for(b in 1:B){
-    BW <- as.vector(rdirichlet(1,rep(1,m)))*m
+    BW <- as.vector(rdirichlet(1,rep(1,m)))*m   # Dirichlet weight
     bfit <- RLMM_HGD(Y, X, Z, ID, gam=gam, bw=BW)
     Boot.Beta[b,] <- bfit$Beta
     Boot.Sig[b] <- bfit$Sig
