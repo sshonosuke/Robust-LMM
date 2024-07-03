@@ -1,7 +1,9 @@
-## This script includes the following three functions: 
-# RLMM_HGD: Fitting robust linear mixed models 
-# RLMM_HGD_select: Selection of the tuning parameter in gamma-divergence
-# RLMM_HGD_boot: Bootstrap for inference
+###----------------------------------------------------------###
+###   This script includes the following three functions:    ###
+###    - RLMM_HGD: Fitting robust linear mixed models        ###
+###    - RLMM_HGD_select: Tuning parameter selection         ###
+###    - RLMM_HGD_boot: Bootstrap for inference              ###
+###----------------------------------------------------------###
 
 # packages 
 library(mvtnorm)
@@ -11,8 +13,8 @@ library(MCMCpack)
 
 
 ###----------------------------------------------------------###
-###              Robust linear mixed models                   ###
-###         via hierarchical gamma-divergence                ###
+###              Robust linear mixed models                  ###
+###          via hierarchical gamma-divergence               ###
 ###----------------------------------------------------------###
 ## INPUT 
 # Y: response variable (vector)
@@ -133,7 +135,6 @@ RLMM_HGD <- function(Y, X, Z, ID, gam=0.5, bw=NULL, maxitr=500, init.fit=NULL){
   Res <- list(Beta=Beta, Sig=Sig, R=R, RE=V, Mu=Mu, itr=k)
   return(Res)
 }
-
 
 
 
