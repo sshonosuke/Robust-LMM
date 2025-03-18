@@ -7,8 +7,13 @@ Sugasawa, S., Hui, K. F. C. and Welsh, A. H. (2024). Robust Linear Mixed Models 
 The repository includes the following files.
 
 - `RLMM-HGD.R` : Implementation of the proposed robust linear mixed models (RLMM) 
-- `Example-Sim.R`: Example of fitting RLMM to simulated data
-- `Example-AIDS.R`: Example of fitting RLMM to a multi-center AIDS cohort study
-- `Simulation-Estimation.R`: Monte Carlo simulation study for parameter estimation (presented in Section 5)
-- `Simulation-Inference.R`: Monte Carlo simulation study for confidence intervals (presented in Section 5)
+- `Example.R`: Oneshot example of fitting RLMM to simulated data
+- `Section-5-MSE.R`: Script to replicate the results of mean squared errors in Section 5
+- `Section-5-MSE-Figure.R`: Script to make Figure 1 in Section 5 and Figure S1 in Supplementary Material
+- `Section-5-CI.R`: Script to replicate the results of credible intervals in Section 5
+- `Section-5-CI-Figure.R`: Script to make Figure 2 in Section 5
+- `Section-6.R`: Script for application to AIDS Cohort Study in Section 6
+- `Section-S5-MSE.R`: Script to replicate the results of mean squared errors in Section S5 (in Supplementary Material)
+- `Section-S5-MSE-Figure.R`: Script to make Figure S3 in Section S5 (in Supplementary Material)
+- `Section-S6.R`: Script for application to AIDS Cohort Study with transformed response variables in Section S6
 - `LMM-DPD-function.R`: Implementation of robust linear mixed models using marginal density power divergence 
