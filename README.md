@@ -4,10 +4,13 @@ This repository provides R code implementing robust linear mixed models, as prop
 
 Sugasawa, S., Hui, K. F. C. and Welsh, A. H. (2024). Robust Linear Mixed Models using Hierarchical Gamma-Divergence. *(arXiv:2407.01883)* 
 
-The repository includes the following files.
-
-- `RLMM_HGD.R` : Implementation of the proposed robust linear mixed models (RLMM) 
+The main files are as follows: 
+ 
+- `RLMM_HGD.R` : Implementation of the proposed robust linear mixed models with hierarchical gamma divergence 
 - `Example.R`: Oneshot example of fitting RLMM to simulated data
+
+This respository includes the following files to replicate the results in the paper:
+
 - `Section-5-MSE.R`: Script to replicate the results of mean squared errors in Section 5
 - `Section-5-MSE-Figure.R`: Script to make Figure 1 in Section 5 and Figure S1
 - `Section-5-CI.R`: Script to replicate the results of credible intervals in Section 5
